@@ -863,10 +863,8 @@ body {
     background-color: var(--background-dark);
     /* Add background to stand out */
     padding: 20px;
-    padding: ;
     border-radius: 16px;
     margin-bottom: 20px;
-    */
     /* margin: 10px; */
     /* Spacing between cards */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
