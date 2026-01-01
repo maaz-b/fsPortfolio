@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://maaz-b.github.io/fsPortfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
