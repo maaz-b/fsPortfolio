@@ -28,7 +28,9 @@ function App() {
   return (
     <>
       <Header />
-      <Avatar />
+      <div id="home">
+        <Avatar />
+      </div>
       <Banners />
       <Intro />
       <ButtonRow />
@@ -42,7 +44,7 @@ function App() {
 
       <Gap size={150} orientation='vertical' className="sectionGap"></Gap>
 
-      <div className='banner'>
+      <div className='banner' id="projects">
         <p><span className='gradientProjects'>Excellence,</span> Delivered!</p>
       </div>
       <ProjectsIntro />
@@ -54,7 +56,7 @@ function App() {
       <ProjectsButtonRow />
       <Gap size={180} orientation='vertical' className="sectionGap"></Gap>
 
-      <div className='banner'>
+      <div className='banner' id="experience">
         <p>Experience? <span className='gradientExperience'>5 years!</span></p>
       </div>
       <ExperienceIntro />
@@ -118,7 +120,9 @@ function App() {
 
       <Gap size={100} orientation="vertical" />
 
-      <Contact />
+      <div id="contact">
+        <Contact />
+      </div>
 
       <ServicePopup activeService={activeService} onClose={() => setActiveService(null)} />
     </>

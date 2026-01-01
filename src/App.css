@@ -126,11 +126,12 @@ body {
   border-radius: 100%;
   will-change: filter;
   transition: filter 300ms;
-}
-
-.logo:hover {
   filter: drop-shadow(0 0 2em var(--secondary-color));
 }
+
+/* .logo:hover {
+  filter: drop-shadow(0 0 2em var(--secondary-color));
+} */
 
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -777,12 +778,22 @@ body {
   color: var(--secondary-text);
 }
 
+.githubIcon {
+  color: var(--secondary-color);
+}
+
+.linkedinIcon {
+  color: var(--blue-dark);
+}
+
 .githubIcon:hover svg {
   cursor: pointer;
+  color: var(--secondary-color);
 }
 
 .linkedinIcon:hover svg {
   cursor: pointer;
+  color: var(--blue-dark);
 }
 
 /* Mobile Responsiveness */
@@ -988,14 +999,14 @@ body {
   }
 
   .projectOverlay p {
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   .salahPO,
   .nftersPO,
   .myskoolPO {
-    max-width: 22vw;
+    max-width: 30vw;
     top: 10%;
     left: 5%;
   }

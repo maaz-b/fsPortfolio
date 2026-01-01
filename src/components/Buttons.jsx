@@ -1,9 +1,17 @@
 import React from 'react';
 
+
+const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 export function ButtonRow() {
     return (
         <div className='row buttonRow'>
-            <button className='buttonPrimary'>Get In Touch</button>
+            <button className='buttonPrimary' onClick={() => scrollToSection('contact')}>Get In Touch</button>
             <button className='buttonSecondary'>Download CV</button>
         </div>
     );
