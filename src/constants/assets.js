@@ -1,49 +1,72 @@
-// constants/assets.js
+import avatar from '../assets/images/avatar.png';
+import myskoolImage from '../assets/images/myskool_square.png';
+import salahproImage from '../assets/images/salah_square.png';
+import salahproBanner from '../assets/images/salah_banner.png';
+import nftersBanner from '../assets/images/nfters_banner.png';
+import myskoolBanner from '../assets/images/myskool_banner.png';
+import lbLogo from '../assets/images/lb_logo.png';
+import doozieLogo from '../assets/images/doozie_logo.svg';
+import appickLogo from '../assets/images/appick_logo.png';
+
+import reactIcon from '../assets/vectors/react.svg';
+import firebaseIcon from '../assets/vectors/firebase.svg';
+import flutterIcon from '../assets/vectors/flutter.svg';
+import nodejsIcon from '../assets/vectors/node_js.svg';
+import googleplayIcon from '../assets/vectors/google_play.svg';
+import appstoreIcon from '../assets/vectors/app_store.svg';
+import awsIcon from '../assets/vectors/aws.svg';
+import html5Icon from '../assets/vectors/html5.svg';
+import angularIcon from '../assets/vectors/angular.svg';
+import javascriptIcon from '../assets/vectors/js.svg';
+import azureIcon from '../assets/vectors/azure.svg';
+import bitbucketIcon from '../assets/vectors/bitbucket.svg';
+import css3Icon from '../assets/vectors/css3.svg';
+import canvaIcon from '../assets/vectors/canva.svg';
+import figmaIcon from '../assets/vectors/figma.svg';
+import gitIcon from '../assets/vectors/git.svg';
+import claudeIcon from '../assets/vectors/claude.svg';
+import dartIcon from '../assets/vectors/dart.svg';
+import flutterflowIcon from '../assets/vectors/flutterflow.svg';
+import gitlabIcon from '../assets/vectors/gitlab.svg';
+import kotlinIcon from '../assets/vectors/kotlin.svg';
+import onesignalIcon from '../assets/vectors/onesignal.svg';
+import stripeIcon from '../assets/vectors/stripe.svg';
+
 export const Assets = {
   logos: {
-    // react: '/src/assets/react.svg',
-    // vite: '/src/assets/vite.svg',
-    avatar: '/src/assets/images/avatar.png',
-    myskoolImage: '/src/assets/images/myskool_square.png',
-    salahproImage: '/src/assets/images/salah_square.png',
-
-    salahproBanner: '/src/assets/images/salah_banner.png',
-    nftersBanner: '/src/assets/images/nfters_banner.png',
-    myskoolBanner: '/src/assets/images/myskool_banner.png',
-
-    lbLogo: '/src/assets/images/lb_logo.png',
-    doozieLogo: '/src/assets/images/doozie_logo.svg',
-    appickLogo: '/src/assets/images/appick_logo.png',
-
- 
+    avatar: avatar,
+    myskoolImage: myskoolImage,
+    salahproImage: salahproImage,
+    salahproBanner: salahproBanner,
+    nftersBanner: nftersBanner,
+    myskoolBanner: myskoolBanner,
+    lbLogo: lbLogo,
+    doozieLogo: doozieLogo,
+    appickLogo: appickLogo,
   },
   icons: {
-    react: '/src/assets/vectors/react.svg',
-    firebase: '/src/assets/vectors/firebase.svg',
-    flutter: '/src/assets/vectors/flutter.svg',
-    nodejs: '/src/assets/vectors/node_js.svg',
-    googleplay: '/src/assets/vectors/google_play.svg',
-    appstore: '/src/assets/vectors/app_store.svg',
-    aws: '/src/assets/vectors/aws.svg',
-    html5: '/src/assets/vectors/html5.svg',
-    angular: '/src/assets/vectors/angular.svg',
-    javascript: '/src/assets/vectors/js.svg',
-    azure: '/src/assets/vectors/azure.svg',
-    bitbucket: '/src/assets/vectors/bitbucket.svg',
-    css3: '/src/assets/vectors/css3.svg',
-    canva: '/src/assets/vectors/canva.svg',
-    figma: '/src/assets/vectors/figma.svg',
-    git: '/src/assets/vectors/git.svg',
-    claude: '/src/assets/vectors/claude.svg',
-    dart: '/src/assets/vectors/dart.svg',
-    flutterflow: '/src/assets/vectors/flutterflow.svg',
-    gitlab: '/src/assets/vectors/gitlab.svg',
-    kotlin: '/src/assets/vectors/kotlin.svg',
-    onesignal: '/src/assets/vectors/onesignal.svg',
-    stripe: '/src/assets/vectors/stripe.svg',
-    
+    react: reactIcon,
+    firebase: firebaseIcon,
+    flutter: flutterIcon,
+    nodejs: nodejsIcon,
+    googleplay: googleplayIcon,
+    appstore: appstoreIcon,
+    aws: awsIcon,
+    html5: html5Icon,
+    angular: angularIcon,
+    javascript: javascriptIcon,
+    azure: azureIcon,
+    bitbucket: bitbucketIcon,
+    css3: css3Icon,
+    canva: canvaIcon,
+    figma: figmaIcon,
+    git: gitIcon,
+    claude: claudeIcon,
+    dart: dartIcon,
+    flutterflow: flutterflowIcon,
+    gitlab: gitlabIcon,
+    kotlin: kotlinIcon,
+    onesignal: onesignalIcon,
+    stripe: stripeIcon,
   },
-//   backgrounds: {
-//     hero: '/src/assets/hero-bg.jpg',
-//   }
 };
