@@ -1,0 +1,1072 @@
+/* Reset default body margin to remove top gap */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+#root {
+  max-width: 100%;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Appbar / Header */
+.appbar {
+  width: 100%;
+  /* Full viewport width */
+  height: 50px;
+  background-color: var(--background-darker);
+  display: flex;
+  align-items: center;
+  /* padding: 0 2rem;               Inner padding for row content */
+  position: relative;
+  /* Sticks to top when scrolling */
+  top: 0;
+  left: 0;
+  z-index: 100;
+  /* Ensure it stays above other content */
+  justify-content: center;
+}
+
+.techStackBackground {
+  width: 100%;
+  background-color: var(--background-darker);
+  padding: 40px 0;
+  margin-top: 20px;
+}
+
+.techStackBackground .banner {
+  /* font-size: 36px;
+  font-weight: 600; */
+}
+
+
+
+.techStackContainer {
+  background-color: var(--background-dark);
+  border-radius: 100px;
+  height: 120px;
+  width: 120px;
+  align-items: center;
+  align-content: center;
+}
+
+.techStackLogo {
+
+  width: 60px;
+}
+
+/* Row inside header */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  justify-content: center;
+}
+
+.techStackRow {
+  gap: 50px;
+  will-change: transform, opacity;
+}
+
+.bannerColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Items inside header */
+.item {
+  cursor: pointer;
+  font-weight: 300;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  color: var(--primary-text);
+}
+
+.item:hover {
+  color: var(--primary-color);
+
+}
+
+.buttonPrimary {
+  color: var(--background-dark);
+  background-color: var(--primary-text-color);
+  border-radius: 100px;
+  padding: 12px 48px;
+  font-size: 20px;
+  font-weight: 500;
+
+}
+
+.buttonSecondary {
+  color: var(--primary-text-color);
+  /* background-color: var(--primary-text-color); */
+  border: 2px solid var(--primary-text-color);
+  border-radius: 100px;
+  padding: 12px 48px;
+  font-size: 20px;
+  font-weight: 500;
+
+}
+
+
+
+/* Logos (unchanged) */
+.logo {
+  margin-top: 40px;
+  height: 210px;
+  width: 210px;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em var(--secondary-color));
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.banner {
+  width: 50%;
+  margin: auto;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.0;
+
+}
+
+.banner p {
+  margin: 0;
+}
+
+.introPara {
+  /* width: 60%; */
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--secondary-text);
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+
+.introPara p {
+  padding: 0 25%;
+  text-align: center;
+}
+
+.gradientWords {
+  line-height: 1.0;
+  background: var(--gradient-primary);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradientTech {
+  line-height: 1.0;
+  background: var(--gradient-blue);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradientProjects {
+  line-height: 1.0;
+  background: var(--gradient-mix);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradientExperience {
+  line-height: 1.0;
+  background: var(--gradient-mix-2);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradientServices {
+  line-height: 1.0;
+  background: var(--gradient-mix-3);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradientAbout {
+  line-height: 1.0;
+  background: var(--gradient-green);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradientTestimonials {
+  line-height: 1.0;
+  background: var(--gradient-mix-4);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Logo spinning */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Cards and other content */
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.introBoldText {
+  font-weight: 700;
+}
+
+/* Projects Carousel Styles */
+.projectsCarouselContainer {
+  width: 100%;
+  /* max-width: 1200px; */
+  /* margin: 0 auto; */
+  /* padding: 0 5%; */
+}
+
+.projectsSwiper {
+  width: 100%;
+  --swiper-pagination-transition-duration: 600ms;
+  padding: 20px 0 60px 0;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+}
+
+.projectImage {
+  width: 100%;
+  /* max-width: 1000px; */
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+/* .projectImage:hover {
+  transform: scale(1.02);
+} */
+
+.projectContent {
+  width: 100%;
+  /* max-width: 800px; */
+}
+
+.projectImageWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.projectOverlay {
+  position: absolute;
+  top: 5vw;
+  left: 3vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  max-width: 40%;
+  text-align: left;
+
+  opacity: 0;
+  transform: translateX(150px);
+
+  transition:
+    opacity 2.5s ease,
+    transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+  pointer-events: none;
+}
+
+.salahPO {
+  max-width: 30vw;
+}
+
+.nftersPO {
+  max-width: 20vw;
+}
+
+.myskoolPO {
+  max-width: 30vw;
+}
+
+.projectOverlay.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.projectOverlay h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--secondary-text);
+}
+
+.projectOverlay p {
+  margin: 0;
+  font-size: clamp(24px, 2.3vw, 48px);
+  font-weight: 600;
+  color: var(--primary-text);
+  line-height: 1.4;
+
+}
+
+
+.projectContent p {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--secondary-text);
+  text-align: start;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Swiper Navigation Buttons */
+.projectsSwiper .swiper-button-next,
+.projectsSwiper .swiper-button-prev {
+  color: var(--primary-text-color);
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
+
+.projectsSwiper .swiper-button-next:after,
+.projectsSwiper .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Swiper Pagination */
+.projectsSwiper .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: var(--secondary-text);
+  opacity: 0.5;
+}
+
+.projectsSwiper .swiper-pagination-bullet-active {
+  background: var(--primary-text-color);
+  opacity: 1;
+}
+
+.experienceCard {
+  max-width: 60vw;
+  justify-self: center;
+  justify-content: center;
+
+}
+
+.experienceLogo {
+  width: 30px;
+  padding: 10px;
+  /* background-color: white; */
+  /* border-radius: 100px; */
+}
+
+.experienceLogoCircle {
+  background-color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+
+  align-items: center;
+  align-content: center;
+
+  justify-content: center;
+  justify-self: center;
+
+}
+
+.experienceDetailsRow {
+  justify-content: space-between;
+  width: 100%;
+  gap: 1px;
+}
+
+.experienceCardRow {
+  gap: 20px;
+}
+
+.experiencePara {
+  text-align: start;
+}
+
+.experienceRole {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.experienceDuration {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--light-grey_text);
+}
+
+.experiencePara {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--light-grey_text);
+  margin-top: 10px;
+}
+
+.roleNormal {
+  font-weight: 300;
+}
+
+
+
+
+.servicesRow {
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.servicesRow {
+  gap: 20px;
+  will-change: transform, opacity;
+}
+
+.serviceCard {
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: 0.5px solid var(--light-grey_text);
+  border-radius: 16px;
+  height: 18vw;
+  width: 20vw;
+  cursor: pointer;
+  color: var(--primary-text-color);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border 0.3s ease;
+}
+
+.serviceTitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--light-grey_text);
+  transition: color 0.3s ease;
+}
+
+.serviceCard:hover {
+  border: 1px solid var(--primary-text-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+}
+
+.serviceCard:hover .serviceTitle {
+  color: var(--primary-text-color);
+}
+
+/* SVG color animation */
+.serviceCard svg {
+  color: var(--light-grey_text);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.serviceCard:hover svg {
+  color: var(--primary-text-color);
+  transform: scale(1.1);
+}
+
+/* ================= TECH STACK MARQUEE ================= */
+/* ================= PERFECT TECH STACK MARQUEE ================= */
+
+.techStackMarqueeWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.techStackMarquee {
+  display: flex;
+  gap: 100px;
+  width: max-content;
+  animation: tech-marquee 720s linear infinite;
+  will-change: transform;
+}
+
+@keyframes tech-marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Items */
+.techStackItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.techStackContainer {
+  border-radius: 100px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.techStackLogo {
+  width: 70px;
+}
+
+
+/* ================= SERVICE POPUP ================= */
+
+.servicePopupBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.25s ease;
+}
+
+.servicePopup {
+  background: var(--light-background);
+  color: var(--primary-text);
+  padding: 32px;
+  width: 380px;
+  max-width: 90%;
+  border-radius: 20px;
+  text-align: left;
+  transform: scale(0.9);
+  animation: popupIn 0.3s ease forwards;
+}
+
+.servicePopup h3 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.servicePopup p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--secondary-text);
+}
+
+.popupCloseBtn {
+  margin-top: 20px;
+  background: var(--primary-text-color);
+  color: var(--background-dark);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+@keyframes popupIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.testimonialCard {
+  max-width: 30vw;
+  min-height: 20vw;
+  justify-self: center;
+  justify-content: left;
+  background-color: var(--background-darker);
+  border-radius: 16px;
+  padding: 30px;
+
+}
+
+.testimonialIcon {
+  color: var(--blue-dark);
+  justify-items: left;
+  justify-content: left;
+  align-items: left;
+  width: 100%;
+}
+
+.testimonialText {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--light-grey_text);
+  text-align: start;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.testimonialAuthor {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--primary-text);
+  text-align: start;
+}
+
+/* Testimonial container */
+.testimonialRow {
+  display: flex;
+  gap: 2vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+/* Initial hidden state */
+.testimonialCard {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.8s ease;
+
+  will-change: transform, opacity, filter;
+}
+
+/* Visible state */
+.testimonialCard.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+
+.testimonialCard.show {
+  transform: translateY(0) scale(1);
+}
+
+.testimonialCard {
+  transform: translateY(40px) scale(0.98);
+}
+
+
+.contactContainer {
+  width: 60vw;
+  justify-self: center;
+}
+
+.contactTitleRow {
+  justify-items: left;
+  justify-content: left;
+  align-items: left;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.emailRow {
+  justify-items: left;
+  justify-content: left;
+  align-items: left;
+  gap: 15px;
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.emailRow:hover {
+
+  color: var(--primary-text);
+  cursor: pointer;
+
+}
+
+.emailRow:hover p {
+  color: var(--primary-text);
+  cursor: pointer;
+
+
+}
+
+.emailRow:hover svg {
+  color: var(--primary-text);
+  cursor: pointer;
+
+
+}
+
+.socialRow {
+  justify-items: left;
+  justify-content: left;
+  align-items: left;
+  gap: 15px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.contactTitle {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.outroText {
+  font-size: 18px;
+  text-align: left;
+  font-weight: 300;
+  color: var(--light-grey_text);
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+}
+
+.emailText {
+  font-size: 18px;
+  text-align: left;
+  font-weight: 300;
+  color: var(--secondary-text);
+}
+
+.githubIcon:hover svg {
+  cursor: pointer;
+}
+
+.linkedinIcon:hover svg {
+  cursor: pointer;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+
+  /* Header */
+  .appbar {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .appbar .row {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  /* Typography */
+  .banner {
+    width: 90%;
+    font-size: 32px;
+  }
+
+  .introPara p {
+    padding: 0 5%;
+    font-size: 16px;
+  }
+
+  /* General Layout - Stack all flex rows by default on mobile, unless specified otherwise */
+  .row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Exceptions where we might want row on mobile too, or specific handling */
+  .appbar .row {
+    flex-direction: row;
+    /* Keep header items horizontal if they fit, or wrap */
+    justify-content: center;
+  }
+
+  .techStackMarquee {
+    /* Horizontal scroll or marquee is fine */
+  }
+
+  .buttonPrimary {
+    color: var(--background-dark);
+    background-color: var(--primary-text-color);
+    border-radius: 100px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+
+  }
+
+  .buttonSecondary {
+    color: var(--primary-text-color);
+    /* background-color: var(--primary-text-color); */
+    border: 2px solid var(--primary-text-color);
+    border-radius: 100px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+
+  }
+
+  /* Buttons */
+  .buttonRow {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Experience Cards */
+  .experienceCard {
+    max-width: 80vw;
+    width: 80vw;
+    /* Re-enabled parallax */
+    /* transform: none !important; */
+    /* opacity: 1 !important; */
+    background-color: var(--background-dark);
+    /* Add background to stand out */
+    padding: 20px;
+    padding: ;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    */
+    /* margin: 10px; */
+    /* Spacing between cards */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .experienceCardRow {
+    flex-direction: row;
+    /* Keep logo and title side by side */
+    align-items: center;
+  }
+
+
+
+  .experienceDetailsRow {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 0px;
+  }
+
+
+  .experienceRole {
+    font-size: 16px;
+    font-weight: 600;
+
+    text-align: left;
+    justify-content: left;
+    padding: 0;
+    margin: 0;
+  }
+
+  .experienceDuration {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--light-grey_text);
+  }
+
+
+
+  .experiencePara {
+    font-size: 16px;
+    font-weight: 300;
+
+    color: var(--light-grey_text);
+    margin-top: 20px;
+  }
+
+  .roleNormal {
+    font-weight: 300;
+  }
+
+
+  /* Services */
+  .servicesRow {
+    flex-direction: column;
+    /* Re-enabled parallax */
+    /* transform: none !important; */
+    /* opacity: 1 !important; */
+    gap: 5;
+    margin-bottom: 20px;
+  }
+
+  .serviceCard {
+    width: 80vw;
+    height: auto;
+    min-height: 150px;
+    /* Ensure minimum height */
+    padding: 24px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--background-dark);
+    /* Optional: distinct background */
+  }
+
+  .servicesGap {
+    margin-bottom: 40px;
+  }
+
+  .techStackItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  .techStackContainer {
+    border-radius: 100px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .techStackLogo {
+    width: 40px;
+    padding: 0;
+    margin: 0;
+  }
+
+
+
+
+  /* Projects */
+  .projectsCarouselContainer {
+    width: 100%;
+    padding: 0;
+  }
+
+  .projectCard {
+    padding: 0;
+    width: 100%;
+  }
+
+  .projectOverlay p {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .salahPO,
+  .nftersPO,
+  .myskoolPO {
+    max-width: 22vw;
+    top: 10%;
+    left: 5%;
+  }
+
+  /* Testimonials */
+  .testimonialRow {
+    flex-direction: column;
+    align-self: start;
+    align-content: start;
+    align-items: left;
+    justify-content: left;
+    justify-items: left;
+  }
+
+  .testimonialCard {
+    max-width: 90vw;
+    margin-bottom: 0px;
+    margin: 5px 30px;
+  }
+
+  .testimonialIcon {
+    color: var(--blue-dark);
+    /* Reset row behavior for icon container */
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    width: 100%;
+    margin-bottom: 10px;
+
+    /* Ensure icon itself is aligned */
+    display: flex;
+    align-items: flex-start;
+  }
+
+  /* Contact */
+  .contactContainer {
+    width: 90vw;
+  }
+
+  .emailRow,
+  .socialRow {
+    flex-direction: row;
+    /* Keep these horizontal */
+    align-items: center;
+  }
+
+  .contactTitleRow {
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* Fix for column layout alignment */
+    text-align: left;
+    width: 100%;
+    /* Ensure full width to allow left alignment */
+  }
+
+  .outroText {
+    text-align: left;
+  }
+
+  /* Ensure no horizontal overflow from animations */
+  body,
+  html,
+  #root {
+    overflow-x: hidden;
+  }
+}
+
+/* Mobile gap reduction */
+@media (max-width: 768px) {
+  .sectionGap {
+    height: 40px !important;
+    /* Reduced further to 40px */
+  }
+}
