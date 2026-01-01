@@ -45,7 +45,12 @@ export default function ProjectsCarousel() {
             <Swiper
                 modules={[Pagination, Autoplay]}
                 spaceBetween={24}
-                slidesPerView={1.3}
+                slidesPerView={1}
+                breakpoints={{
+                    768: {
+                        slidesPerView: 1.3,
+                    }
+                }}
                 centeredSlides={true}
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 5500, disableOnInteraction: false }}

@@ -123,6 +123,7 @@ body {
   height: 210px;
   width: 210px;
   padding: 1.5em;
+  border-radius: 100%;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -1012,7 +1013,15 @@ body {
   .testimonialCard {
     max-width: 90vw;
     margin-bottom: 0px;
-    margin: 5px 30px;
+    margin: 5px 20px;
+  }
+
+  .contactTitle {
+    font-size: 22px;
+  }
+
+  .outroText {
+    font-size: 16px;
   }
 
   .testimonialIcon {
@@ -1048,6 +1057,7 @@ body {
     width: 100%;
     /* Ensure full width to allow left alignment */
   }
+
 
   .outroText {
     text-align: left;

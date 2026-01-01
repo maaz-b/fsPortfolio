@@ -1,4 +1,4 @@
-import avatar from '../assets/images/avatar.png';
+import avatar from '../assets/images/avtar.png';
 import myskoolImage from '../assets/images/myskool_square.png';
 import salahproImage from '../assets/images/salah_square.png';
 import salahproBanner from '../assets/images/salah_banner.png';
