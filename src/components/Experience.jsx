@@ -3,16 +3,12 @@ import { useParallax } from '../hooks/useParallax.js';
 
 function ExperienceCard({ logo, role, company, duration, description }) {
     const cardRef = useRef(null);
-    // Reusing useParallax for the card animation matching original behavior
-    // Original: translateX = (1 - offset) * -150
-    // useParallax(left): translateX = (1 - offset) * -150
-    const style = useParallax(cardRef, 'left');
+    useParallax(cardRef, 'left');
 
     return (
         <div
             ref={cardRef}
             className='experienceCard'
-            style={style}
         >
             <div className='row experienceCardRow'>
                 <div className='experienceLogoCircle'>

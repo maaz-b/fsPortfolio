@@ -31,10 +31,10 @@ const services = [
 
 export function ServicesRowRight({ setActiveService }) {
     const rowRef = useRef(null);
-    const style = useParallax(rowRef, 'right');
+    useParallax(rowRef, 'right');
 
     return (
-        <div ref={rowRef} className="row servicesRow" style={style}>
+        <div ref={rowRef} className="row servicesRow">
             <div className="serviceCard" onClick={() => setActiveService(services[0])} >
                 <WebsiteIcon size={50} />
                 <p className="serviceTitle">Website Development</p>
@@ -55,10 +55,10 @@ export function ServicesRowRight({ setActiveService }) {
 
 export function ServicesRowLeft({ setActiveService }) {
     const rowRef = useRef(null);
-    const style = useParallax(rowRef, 'left');
+    useParallax(rowRef, 'left');
 
     return (
-        <div ref={rowRef} className="row servicesRow" style={style}>
+        <div ref={rowRef} className="row servicesRow">
             <div className="serviceCard" onClick={() => setActiveService(services[3])}>
                 <RescueIcon size={50} />
                 <p className="serviceTitle">Product Rescue</p>

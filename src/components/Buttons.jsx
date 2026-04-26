@@ -1,26 +1,22 @@
-import React from 'react';
-
-
-const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-};
+import { Link } from 'react-router-dom';
 
 export function ButtonRow() {
     return (
-        <div className='row buttonRow'>
-            <button className='buttonPrimary' onClick={() => scrollToSection('contact')}>Get In Touch</button>
-            <button className='buttonSecondary'>Download CV</button>
+        <div className="row buttonRow">
+            <Link className="buttonPrimary buttonLink" to="/contact">
+                Get In Touch
+            </Link>
+            <button className="buttonSecondary">Download CV</button>
         </div>
     );
 }
 
 export function ProjectsButtonRow() {
     return (
-        <div className='row buttonRow'>
-            <button className='buttonSecondary'>See All Projects</button>
+        <div className="row buttonRow">
+            <Link className="buttonSecondary buttonLink" to="/projects">
+                See All Projects
+            </Link>
         </div>
     );
 }

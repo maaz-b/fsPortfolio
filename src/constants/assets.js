@@ -32,6 +32,23 @@ import kotlinIcon from '../assets/vectors/kotlin.svg';
 import onesignalIcon from '../assets/vectors/onesignal.svg';
 import stripeIcon from '../assets/vectors/stripe.svg';
 
+import mockupMyskool1 from '../assets/mockups/iMockup_myskool1.png';
+import mockupMyskool2 from '../assets/mockups/iMockup_myskool2.png';
+import mockupSalahpro1 from '../assets/mockups/iMockup_salahpro1.png';
+import mockupSalahpro2 from '../assets/mockups/iMockup_salahpro3.png';
+import quranlySquareImg from '../assets/mockups/quranly_square.png';
+import scopeInspectSquareImg from '../assets/mockups/scope_inspect_square.png';
+import mockupQuranly1 from '../assets/mockups/iMockup_quranly1.png';
+import mockupQuranly2 from '../assets/mockups/iMockup_quranly2.png';
+import mockupScope1 from '../assets/mockups/iMockup_scope1.png';
+import mockupScope2 from '../assets/mockups/iMockup_scope2.png';
+import nextrideSquareImg from '../assets/mockups/nextride_square.png';
+import streetSenseMediaSquareImg from '../assets/mockups/street_sense_media_square.png';
+import mockupNextride1 from '../assets/mockups/iMockUp_nextride1.png';
+import mockupNextride2 from '../assets/mockups/iMockup_nextride2.png';
+import mockupStreetsense1 from '../assets/mockups/iMockUp_streetsense1.png';
+import mockupStreetsense2 from '../assets/mockups/iMockup_streetsense2.png';
+
 export const Assets = {
   logos: {
     avatar: avatar,
@@ -43,6 +60,24 @@ export const Assets = {
     lbLogo: lbLogo,
     doozieLogo: doozieLogo,
     appickLogo: appickLogo,
+    quranlySquare: quranlySquareImg,
+    scopeInspectSquare: scopeInspectSquareImg,
+    nextrideSquare: nextrideSquareImg,
+    streetSenseMediaSquare: streetSenseMediaSquareImg,
+  },
+  mockups: {
+    myskool1: mockupMyskool1,
+    myskool2: mockupMyskool2,
+    salahpro1: mockupSalahpro1,
+    salahpro2: mockupSalahpro2,
+    quranly1: mockupQuranly1,
+    quranly2: mockupQuranly2,
+    scope1: mockupScope1,
+    scope2: mockupScope2,
+    nextride1: mockupNextride1,
+    nextride2: mockupNextride2,
+    streetsense1: mockupStreetsense1,
+    streetsense2: mockupStreetsense2,
   },
   icons: {
     react: reactIcon,

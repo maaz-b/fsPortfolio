@@ -1,20 +1,41 @@
-import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
+    const { pathname } = useLocation();
+
     const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const isHome = pathname === '/';
+
     return (
-        <div className='appbar'>
-            <div className='row'>
-                <span className='item' onClick={() => scrollToSection('home')}>Home</span>
-                <span className='item' onClick={() => scrollToSection('projects')}>Projects</span>
-                <span className='item' onClick={() => scrollToSection('experience')}>Experience</span>
-                <span className='item' onClick={() => scrollToSection('contact')}>Contact</span>
+        <div className="appbar">
+            <div className="row">
+                {isHome ? (
+                    <span className="item" onClick={() => scrollToSection('home')}>
+                        Home
+                    </span>
+                ) : (
+                    <Link className="item" to="/">
+                        Home
+                    </Link>
+                )}
+                <Link className="item" to="/projects">
+                    Projects
+                </Link>
+                {isHome ? (
+                    <span className="item" onClick={() => scrollToSection('experience')}>
+                        Experience
+                    </span>
+                ) : (
+                    <Link className="item" to="/#experience">
+                        Experience
+                    </Link>
+                )}
+                <Link className="item" to="/contact">
+                    Contact
+                </Link>
             </div>
         </div>
     );

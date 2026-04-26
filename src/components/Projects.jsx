@@ -1,55 +1,70 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Assets } from '../constants/assets.js';
 import Gap from './Gap.jsx';
+import { projects } from '../constants/projectsData.js';
 
-function ProjectCard({ image, title, description, isActive }) {
+/** Home carousel only — keep Nfters off the landing slide strip. */
+const HOME_CAROUSEL_PROJECTS = projects.filter((p) => p.id !== 'nfters');
+
+function carouselSlideImage(project) {
+    if (project.id === 'salah-pro' || project.id === 'myskool') {
+        return project.thumb;
+    }
+    return project.image;
+}
+
+function overlayClassForId(id) {
+    if (id === 'salah-pro') return 'salahPO';
+    if (id === 'myskool') return 'myskoolPO';
+    if (id === 'quranly') return 'quranlyPO';
+    if (id === 'scope-inspect') return 'scopePO';
+    if (id === 'nextride') return 'nextridePO';
+    if (id === 'street-sense-media') return 'streetSensePO';
+    return 'myskoolPO';
+}
+
+function ProjectCard({ image, title, caption, isActive, projectId }) {
     return (
-        <div className="projectCard">
-            <div className="projectImageWrapper">
-                <img className="projectImage" src={image} alt={title} />
-                {/* Overlay */}
-                <div className={`projectOverlay ${isActive ? 'show' : ''} ${title === "Salah Pro" ? 'salahPO' : title === "Nfters" ? 'nftersPO' : 'myskoolPO'}`}>
-                    <p> <span className='introBoldText'>{title}</span> {description} </p>
+        <Link to={`/projects/${projectId}`} className="projectCardLink">
+            <div className="projectCard">
+                <div className="projectImageWrapper">
+                    <img className="projectImage" src={image} alt={title} />
+                    <div
+                        className={`projectOverlay ${isActive ? 'show' : ''} ${overlayClassForId(projectId)}`}
+                    >
+                        <div className="projectOverlayGlass">
+                            <p className="projectOverlayText">
+                                <span className="introBoldText">{title}</span>
+                                <span className="projectOverlaySub">{caption}</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+                <Gap size={20} orientation="vertical" />
             </div>
-            <Gap size={20} orientation="vertical" />
-        </div>
+        </Link>
     );
 }
 
 export default function ProjectsCarousel() {
-    const projects = [
-        {
-            image: Assets.logos.salahproBanner,
-            title: "Salah Pro",
-            description: ": Alarms and Timer app with augmented reality powered compass, donational transactions and marketplace."
-        },
-        {
-            image: Assets.logos.nftersBanner,
-            title: "Nfters",
-            description: ": A marketplace for buying and selling digital NFT assets with wallet integration."
-        },
-        {
-            image: Assets.logos.myskoolBanner,
-            title: "MySkool",
-            description: ": School LMS platform with biometric attendance."
-        }
-    ];
-
     return (
-        <div className='projectsCarouselContainer'>
+        <div className="projectsCarouselContainer">
             <Swiper
                 modules={[Pagination, Autoplay]}
-                spaceBetween={24}
+                spaceBetween={18}
                 slidesPerView={1}
                 breakpoints={{
-                    768: {
-                        slidesPerView: 1.3,
-                    }
+                    640: {
+                        slidesPerView: 1.04,
+                        spaceBetween: 22,
+                    },
+                    1024: {
+                        slidesPerView: 1.08,
+                        spaceBetween: 28,
+                    },
                 }}
                 centeredSlides={true}
                 pagination={{ clickable: true }}
@@ -60,16 +75,17 @@ export default function ProjectsCarousel() {
                 resistanceRatio={0.6}
                 touchRatio={1}
                 slideToClickedSlide={true}
-                className='projectsSwiper'
+                className="projectsSwiper"
             >
-                {projects.map((project, index) => (
-                    <SwiperSlide key={index}>
+                {HOME_CAROUSEL_PROJECTS.map((project) => (
+                    <SwiperSlide key={project.id}>
                         {({ isActive }) => (
                             <ProjectCard
-                                image={project.image}
+                                image={carouselSlideImage(project)}
                                 title={project.title}
-                                description={project.description}
+                                caption={project.carouselCaption ?? project.tagline}
                                 isActive={isActive}
+                                projectId={project.id}
                             />
                         )}
                     </SwiperSlide>
