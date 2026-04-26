@@ -235,6 +235,209 @@ a.buttonSecondary:focus-visible {
   -webkit-text-fill-color: transparent;
 }
 
+/* Home — testimonials: conic glow (detail hero ring style) + glass cards (detail hero bento style) */
+.homeTestimonialsSection {
+  --ht-accent-from: var(--blue-light);
+  --ht-accent-to: var(--secondary-color);
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  padding: clamp(28px, 4vw, 56px) 0 clamp(40px, 6vw, 88px);
+}
+
+.homeTestimonialsSectionAmbient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.homeTestimonialsSectionGlow {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: min(165vw, 920px);
+  height: min(165vw, 920px);
+  transform: translate(-50%, -50%);
+  border-radius: 42%;
+  background: conic-gradient(
+    from 200deg,
+    color-mix(in srgb, var(--ht-accent-from) 22%, transparent),
+    transparent 32%,
+    color-mix(in srgb, var(--ht-accent-to) 18%, transparent) 52%,
+    transparent 78%
+  );
+  opacity: 0.48;
+  pointer-events: none;
+  animation: projectDetailHeroGlow 72s linear infinite;
+}
+
+.homeTestimonialsSectionInner {
+  position: relative;
+  z-index: 1;
+}
+
+.homeTestimonialsSection .testimonialRow {
+  max-width: min(1120px, 94vw);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.homeTestimonialsSection .testimonialCard {
+  position: relative;
+  max-width: 30vw;
+  min-height: unset;
+  justify-self: center;
+  justify-content: flex-start;
+  /* Lighter glass — aligned with project detail mockups panel + blur */
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.055) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.26) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 28px;
+  box-shadow:
+    0 3px 0 color-mix(in srgb, var(--ht-accent-from) 12%, transparent) inset,
+    0 22px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  padding: clamp(22px, 2.8vw, 32px);
+  overflow: visible;
+}
+
+.homeTestimonialsSection .testimonialCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-radius: 28px 28px 0 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.homeTestimonialsSection .testimonialIcon,
+.homeTestimonialsSection .testimonialText,
+.homeTestimonialsSection .testimonialAuthor {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeTestimonialsSectionGlow {
+    animation: none;
+  }
+}
+
+/* Home — services: same glass + conic band as testimonials (services gradient accents) */
+.homeServicesSection {
+  --hs-accent-from: var(--orange-light);
+  --hs-accent-to: var(--blue-dark);
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  padding: clamp(20px, 3vw, 40px) 0 clamp(28px, 4vw, 48px);
+}
+
+.homeServicesSectionAmbient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.homeServicesSectionGlow {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: min(170vw, 880px);
+  height: min(170vw, 880px);
+  transform: translate(-50%, -50%);
+  border-radius: 42%;
+  background: conic-gradient(
+    from 165deg,
+    color-mix(in srgb, var(--hs-accent-from) 20%, transparent),
+    transparent 30%,
+    color-mix(in srgb, var(--hs-accent-to) 18%, transparent) 48%,
+    transparent 76%
+  );
+  opacity: 0.44;
+  pointer-events: none;
+  animation: projectDetailHeroGlow 72s linear infinite;
+}
+
+.homeServicesSectionInner {
+  position: relative;
+  z-index: 1;
+}
+
+.homeServicesSection .servicesRow {
+  max-width: min(1120px, 94vw);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.homeServicesSection .serviceCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.055) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.26) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  box-shadow:
+    0 3px 0 color-mix(in srgb, var(--hs-accent-from) 12%, transparent) inset,
+    0 22px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.homeServicesSection .serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.homeServicesSection .serviceCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.homeServicesSection .serviceCard:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 3px 0 color-mix(in srgb, var(--hs-accent-from) 18%, transparent) inset,
+    0 28px 64px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.28);
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeServicesSectionGlow {
+    animation: none;
+  }
+}
+
 /* Logo spinning */
 @keyframes logo-spin {
   from {
@@ -711,10 +914,8 @@ a.buttonSecondary:focus-visible {
   min-height: 20vw;
   justify-self: center;
   justify-content: left;
-  background-color: var(--background-darker);
   border-radius: 16px;
   padding: 30px;
-
 }
 
 .testimonialIcon {
@@ -1488,14 +1689,15 @@ a.buttonLink {
   align-items: center;
   padding: clamp(22px, 3vw, 36px);
   border-radius: 28px;
-  background: linear-gradient(155deg, rgba(42, 38, 36, 0.55) 0%, rgba(14, 13, 12, 0.92) 48%, rgba(10, 10, 10, 0.98) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  /* Airy glass — closer to mockups panel opacity + blur */
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.055) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.26) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow:
-    0 4px 0 color-mix(in srgb, var(--pd-accent-from) 22%, transparent) inset,
-    0 32px 80px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+    0 3px 0 color-mix(in srgb, var(--pd-accent-from) 12%, transparent) inset,
+    0 22px 56px rgba(0, 0, 0, 0.32),
+    0 0 0 1px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
   position: relative;
   /* visible so home-style horizontal parallax is not clipped at rounded corners */
   overflow: visible;
@@ -1508,7 +1710,7 @@ a.buttonLink {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
   pointer-events: none;
 }
 
@@ -1565,7 +1767,8 @@ a.buttonLink {
   font-weight: 300;
   color: var(--secondary-text);
   line-height: 1.6;
-  max-width: 38ch;
+  /* Same long line as home carousel; keep readable measure in hero column */
+  max-width: min(58ch, 100%);
 }
 
 .projectDetailStackRow {
@@ -1773,7 +1976,7 @@ a.buttonLink {
   opacity: 0.7;
   pointer-events: none;
   z-index: 0;
-  animation: projectDetailHeroGlow 14s linear infinite;
+  animation: projectDetailHeroGlow 72s linear infinite;
 }
 
 @keyframes projectDetailHeroGlow {
@@ -1806,6 +2009,186 @@ a.buttonLink {
   height: auto;
   vertical-align: middle;
   transform: scale(1.02);
+}
+
+/* ───────── Zoomable image affordance + lightbox ───────── */
+.zoomableImageButton {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  cursor: zoom-in;
+  border-radius: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.zoomableImageButton:focus {
+  outline: none;
+}
+
+.zoomableImageButton:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--pd-accent-from, #ff8660) 70%, white 30%);
+  outline-offset: 4px;
+}
+
+.zoomableImage {
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 360ms ease;
+  will-change: transform, filter;
+}
+
+.zoomableImageButton:hover .zoomableImage {
+  transform: scale(1.025);
+  filter: brightness(1.04);
+}
+
+.projectDetailHeroZoomBtn {
+  display: block;
+  line-height: 0;
+}
+
+.projectDetailHeroZoomBtn:hover .projectDetailHeroImg {
+  transform: scale(1.045);
+}
+
+.projectDetailMockupZoomBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+.imageLightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(6, 6, 8, 0.78);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  animation: imageLightboxBackdropIn 320ms ease forwards;
+}
+
+/* Full-area stage so the image is centered independently of the fixed close control */
+.imageLightboxStage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.imageLightboxStage .imageLightboxImg {
+  pointer-events: auto;
+}
+
+.imageLightbox--open,
+.imageLightbox--opening {
+  opacity: 1;
+}
+
+.imageLightbox--closing {
+  opacity: 0;
+  animation: none;
+  transition: opacity 280ms ease;
+}
+
+@keyframes imageLightboxBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.imageLightboxImg {
+  display: block;
+  max-width: min(94vw, 1400px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  cursor: default;
+  user-select: none;
+  -webkit-user-drag: none;
+  will-change: transform;
+}
+
+.imageLightboxClose {
+  position: fixed;
+  top: clamp(14px, 2.4vw, 24px);
+  right: clamp(14px, 2.4vw, 28px);
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  cursor: pointer;
+  z-index: 2;
+  transition:
+    background 200ms ease,
+    transform 200ms ease,
+    border-color 200ms ease;
+}
+
+.imageLightboxCloseIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.imageLightboxCloseIcon svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.imageLightboxClose:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: scale(1.06);
+}
+
+.imageLightboxClose:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imageLightbox {
+    animation: none;
+    opacity: 1;
+    transition: none;
+  }
+  .imageLightboxImg,
+  .zoomableImage,
+  .zoomableImageButton {
+    transition: none !important;
+  }
 }
 
 /* Shared content column: overview, highlights, and implementation notes stay aligned */
@@ -2170,6 +2553,19 @@ a.buttonSecondary {
     /* Optional: distinct background */
   }
 
+  .homeServicesSection .serviceCard {
+    width: min(90vw, 520px);
+    max-width: min(90vw, 520px);
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.055) 0%, rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.26) 100%);
+  }
+
+  .homeServicesSection .servicesRow {
+    align-items: center;
+    align-self: center;
+  }
+
   .servicesGap {
     margin-bottom: 40px;
   }
@@ -2318,6 +2714,18 @@ a.buttonSecondary {
     max-width: 90vw;
     margin-bottom: 0px;
     margin: 5px 20px;
+  }
+
+  .homeTestimonialsSection .testimonialCard {
+    max-width: min(90vw, 520px);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .homeTestimonialsSection .testimonialRow {
+    align-items: center;
+    align-self: center;
   }
 
   .contactTitle {

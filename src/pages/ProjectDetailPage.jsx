@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 
 import { Assets } from '../constants/assets.js';
@@ -6,6 +6,7 @@ import { getProjectById } from '../constants/projectsData.js';
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll.js';
 import { useParallax } from '../hooks/useParallax.js';
 import Gap from '../components/Gap.jsx';
+import ImageLightbox from '../components/ImageLightbox.jsx';
 
 function CodePanel({ title, language, code }) {
     return (
@@ -58,7 +59,7 @@ function StoreLinks({ storeLinks }) {
     );
 }
 
-function MockupGallery({ mockups, asideText, projectId }) {
+function MockupGallery({ mockups, asideText, projectId, onZoom }) {
     const mockCopyRef = useRef(null);
     const mockFramesRef = useRef(null);
     const pb = parallaxBlock(projectId);
@@ -82,12 +83,23 @@ function MockupGallery({ mockups, asideText, projectId }) {
                         {pair.map((item, index) => (
                             <div key={`${item.src}-${index}`} className="projectDetailMockupCell">
                                 <figure className="projectDetailMockupFigure">
-                                    <img
-                                        src={item.src}
-                                        alt={item.alt}
-                                        className="projectDetailMockupImg"
-                                        loading="lazy"
-                                    />
+                                    <button
+                                        type="button"
+                                        className="zoomableImageButton projectDetailMockupZoomBtn"
+                                        onClick={(e) => {
+                                            const target = e.currentTarget.querySelector('img');
+                                            const rect = target?.getBoundingClientRect();
+                                            if (rect && onZoom) onZoom(item.src, item.alt, rect);
+                                        }}
+                                        aria-label={`View ${item.alt} larger`}
+                                    >
+                                        <img
+                                            src={item.src}
+                                            alt={item.alt}
+                                            className="projectDetailMockupImg zoomableImage"
+                                            loading="lazy"
+                                        />
+                                    </button>
                                 </figure>
                             </div>
                         ))}
@@ -119,6 +131,16 @@ export default function ProjectDetailPage() {
     useParallax(highlightsRef, { direction: 'right', ...pb });
 
     useRevealOnScroll('.projectDetailReveal', projectId);
+
+    const [zoomed, setZoomed] = useState(null);
+
+    const openZoom = useCallback((src, alt, originRect) => {
+        setZoomed({ src, alt, originRect });
+    }, []);
+
+    const closeZoom = useCallback(() => {
+        setZoomed(null);
+    }, []);
 
     useEffect(() => {
         if (project) document.title = `${project.title} | Maaz`;
@@ -165,7 +187,9 @@ export default function ProjectDetailPage() {
                                 </p>
                             </div>
                             <h1 className="projectDetailTitle">{project.title}</h1>
-                            <p className="projectDetailTagline">{project.tagline}</p>
+                            <p className="projectDetailTagline">
+                                {project.carouselCaption ?? project.tagline}
+                            </p>
                             <div className="projectDetailStackRow">
                                 {project.stack.map((t) => (
                                     <span key={t} className="projectDetailChip">
@@ -180,11 +204,28 @@ export default function ProjectDetailPage() {
                             <div className="projectDetailHeroVisualRing" aria-hidden="true" />
                             <div className="projectDetailHeroVisualInner">
                                 <div className="projectDetailHeroParallax">
-                                    <img
-                                        src={project.detailHeroImage ?? project.image}
-                                        alt=""
-                                        className="projectDetailHeroImg"
-                                    />
+                                    <button
+                                        type="button"
+                                        className="zoomableImageButton projectDetailHeroZoomBtn"
+                                        onClick={(e) => {
+                                            const target = e.currentTarget.querySelector('img');
+                                            const rect = target?.getBoundingClientRect();
+                                            if (rect) {
+                                                openZoom(
+                                                    project.detailHeroImage ?? project.image,
+                                                    `${project.title} banner`,
+                                                    rect,
+                                                );
+                                            }
+                                        }}
+                                        aria-label={`View ${project.title} banner larger`}
+                                    >
+                                        <img
+                                            src={project.detailHeroImage ?? project.image}
+                                            alt=""
+                                            className="projectDetailHeroImg zoomableImage"
+                                        />
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -222,6 +263,7 @@ export default function ProjectDetailPage() {
                     mockups={project.mockups}
                     asideText={project.mockupAside ?? project.shortDescription}
                     projectId={projectId}
+                    onZoom={openZoom}
                 />
 
                 {project.mockups?.length ? <Gap size={48} orientation="vertical" /> : null}
@@ -254,6 +296,12 @@ export default function ProjectDetailPage() {
                 </div>
                 <Gap size={80} orientation="vertical" />
             </div>
+            <ImageLightbox
+                src={zoomed?.src ?? null}
+                alt={zoomed?.alt}
+                originRect={zoomed?.originRect}
+                onClose={closeZoom}
+            />
         </div>
     );
 }

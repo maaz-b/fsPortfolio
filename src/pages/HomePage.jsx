@@ -91,31 +91,45 @@ export default function HomePage() {
 
             <Gap size={180} orientation="vertical" className="sectionGap"></Gap>
 
-            <div className="banner">
-                <p>Elevate your</p>
-                <Gap size={10} orientation="vertical"></Gap>
-                <p>
-                    <span className="gradientServices">digital footprint!</span>
-                </p>
-            </div>
-            <Gap size={100} orientation="vertical" className="sectionGap" />
+            <section className="homeServicesSection" aria-labelledby="home-services-heading">
+                <div className="homeServicesSectionAmbient" aria-hidden="true">
+                    <div className="homeServicesSectionGlow" />
+                </div>
+                <div className="homeServicesSectionInner">
+                    <div className="banner" id="home-services-heading">
+                        <p>Elevate your</p>
+                        <Gap size={10} orientation="vertical"></Gap>
+                        <p>
+                            <span className="gradientServices">digital footprint!</span>
+                        </p>
+                    </div>
+                    <Gap size={100} orientation="vertical" className="sectionGap" />
 
-            <ServicesRowRight setActiveService={setActiveService} />
+                    <ServicesRowRight setActiveService={setActiveService} />
 
-            <ServicesRowLeft setActiveService={setActiveService} />
+                    <ServicesRowLeft setActiveService={setActiveService} />
+                </div>
+            </section>
 
             <Gap size={200} orientation="vertical" className="sectionGap" />
 
-            <div className="banner">
-                <p>
-                    What <span className="gradientTestimonials">others say!</span>
-                </p>
-            </div>
+            <section className="homeTestimonialsSection" aria-labelledby="home-testimonials-heading">
+                <div className="homeTestimonialsSectionAmbient" aria-hidden="true">
+                    <div className="homeTestimonialsSectionGlow" />
+                </div>
+                <div className="homeTestimonialsSectionInner">
+                    <div className="banner" id="home-testimonials-heading">
+                        <p>
+                            What <span className="gradientTestimonials">others say!</span>
+                        </p>
+                    </div>
 
-            <Gap size={100} orientation="vertical" className="sectionGap" />
+                    <Gap size={100} orientation="vertical" className="sectionGap" />
 
-            <Testimonials />
-            <Testimonials2 />
+                    <Testimonials />
+                    <Testimonials2 />
+                </div>
+            </section>
 
             <Gap size={100} orientation="vertical" />
 

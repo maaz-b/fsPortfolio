@@ -2,7 +2,6 @@ import avatar from '../assets/images/avtar.png';
 import myskoolImage from '../assets/images/myskool_square.png';
 import salahproImage from '../assets/images/salah_square.png';
 import salahproBanner from '../assets/images/salah_banner.png';
-import nftersBanner from '../assets/images/nfters_banner.png';
 import myskoolBanner from '../assets/images/myskool_banner.png';
 import lbLogo from '../assets/images/lb_logo.png';
 import doozieLogo from '../assets/images/doozie_logo.svg';
@@ -55,7 +54,6 @@ export const Assets = {
     myskoolImage: myskoolImage,
     salahproImage: salahproImage,
     salahproBanner: salahproBanner,
-    nftersBanner: nftersBanner,
     myskoolBanner: myskoolBanner,
     lbLogo: lbLogo,
     doozieLogo: doozieLogo,
