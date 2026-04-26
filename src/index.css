@@ -1,0 +1,110 @@
+:root {
+
+    --primary-color: #ff8660;
+    --secondary-color: #9A33FF;
+
+    --gradient-primary: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+
+    --orange-light: #FF8660;
+    --orange-dark: #D5491D;
+
+    --gradient-orange: linear-gradient(90deg, var(--orange-light) 0%, var(--orange-dark) 100%);
+
+    --blue-light: #b1d7fc;
+    --blue-dark: #0267cd;
+
+    --gradient-blue: linear-gradient(90deg, var(--green-light) 0%, var(--orange-dark) 100%);
+
+     --green-light: #b1fcc1;
+    --green-dark: #00a416;
+
+    --gradient-green: linear-gradient(90deg, var(--green-light) 0%, var(--green-dark) 100%);
+
+    --gradient-mix: linear-gradient(90deg, var(--blue-light) 0%, var(--secondary-color) 100%);
+
+     --gradient-mix-2: linear-gradient(90deg, var(--green-light) 0%, var(--blue-dark) 100%);
+     --gradient-mix-3: linear-gradient(90deg, var(--orange-light) 0%, var(--blue-dark) 100%);
+     --gradient-mix-4: linear-gradient(90deg, var(--blue-light) 0%, var(--secondary-color) 100%);
+
+    --secondary-text: #C5C5C5;
+
+    --primary-text-color: #ffffff;
+
+    --light-grey_text: #8491A0;
+
+    --background-dark: #161513;
+        --background-darker: #121212;
+    --background-darkest: #080808;
+
+    --light-background: #222222;
+
+
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--primary-text-color);
+  background-color: var(--background-darkest);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--gradient-primary);
+}
+
+html, body {
+  margin: 0;
+  /* display: flex;
+  place-items: center; */
+  min-width: 320px;
+  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 100px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--background-color);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: var(--ora);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
