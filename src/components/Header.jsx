@@ -24,15 +24,6 @@ export default function Header() {
                 <Link className="item" to="/projects">
                     Projects
                 </Link>
-                {isHome ? (
-                    <span className="item" onClick={() => scrollToSection('experience')}>
-                        Experience
-                    </span>
-                ) : (
-                    <Link className="item" to="/#experience">
-                        Experience
-                    </Link>
-                )}
                 <Link className="item" to="/contact">
                     Contact
                 </Link>
