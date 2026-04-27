@@ -47,6 +47,15 @@ import mockupNextride1 from '../assets/mockups/iMockUp_nextride1.png';
 import mockupNextride2 from '../assets/mockups/iMockup_nextride2.png';
 import mockupStreetsense1 from '../assets/mockups/iMockUp_streetsense1.png';
 import mockupStreetsense2 from '../assets/mockups/iMockup_streetsense2.png';
+import legitridesSquareImg from '../assets/mockups/legitrides_square.png';
+import mediconnectSquareImg from '../assets/mockups/mediconnect_square.png';
+import luminateSquareImg from '../assets/mockups/luminate_square.png';
+import mockupLegitrides1 from '../assets/mockups/iMockup_legitrides1.png';
+import mockupLegitrides2 from '../assets/mockups/iMockup_legitrides2.png';
+import mockupMediconnect1 from '../assets/mockups/iMockup_mediconnect1.png';
+import mockupMediconnect2 from '../assets/mockups/iMockup_mediconnect2.png';
+import mockupLuminate1 from '../assets/mockups/iMockup_luminate1.png';
+import mockupLuminate2 from '../assets/mockups/iMockup_luminate2.png';
 
 export const Assets = {
   logos: {
@@ -62,6 +71,9 @@ export const Assets = {
     scopeInspectSquare: scopeInspectSquareImg,
     nextrideSquare: nextrideSquareImg,
     streetSenseMediaSquare: streetSenseMediaSquareImg,
+    legitridesSquare: legitridesSquareImg,
+    mediconnectSquare: mediconnectSquareImg,
+    luminateSquare: luminateSquareImg,
   },
   mockups: {
     myskool1: mockupMyskool1,
@@ -76,6 +88,12 @@ export const Assets = {
     nextride2: mockupNextride2,
     streetsense1: mockupStreetsense1,
     streetsense2: mockupStreetsense2,
+    legitrides1: mockupLegitrides1,
+    legitrides2: mockupLegitrides2,
+    mediconnect1: mockupMediconnect1,
+    mediconnect2: mockupMediconnect2,
+    luminate1: mockupLuminate1,
+    luminate2: mockupLuminate2,
   },
   icons: {
     react: reactIcon,

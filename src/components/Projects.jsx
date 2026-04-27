@@ -6,6 +6,9 @@ import 'swiper/css/pagination';
 import Gap from './Gap.jsx';
 import { projects } from '../constants/projectsData.js';
 
+const HOME_SLIDER_PROJECT_COUNT = 4;
+const featuredProjects = projects.slice(0, HOME_SLIDER_PROJECT_COUNT);
+
 function carouselSlideImage(project) {
     if (project.id === 'salah-pro' || project.id === 'myskool') {
         return project.thumb;
@@ -74,7 +77,7 @@ export default function ProjectsCarousel() {
                 slideToClickedSlide={true}
                 className="projectsSwiper"
             >
-                {projects.map((project) => (
+                {featuredProjects.map((project) => (
                     <SwiperSlide key={project.id}>
                         {({ isActive }) => (
                             <ProjectCard

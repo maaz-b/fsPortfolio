@@ -314,6 +314,381 @@ export const projects = [
         ],
     },
     {
+        id: 'legit-rides',
+        title: 'Legit Rides',
+        tagline: 'Dual-sided ride hailing platform for riders and drivers',
+        carouselCaption:
+            'Two coordinated apps for riders and drivers with real-time trip state, payouts, and dark/light themes tuned for long shifts and daily commuting.',
+        shortDescription:
+            'Ride hailing platform with separate rider and driver apps, full trip lifecycle state, dynamic pricing hooks, dark/light mode support, and resilient real-time communication.',
+        image: Assets.logos.legitridesSquare,
+        thumb: Assets.logos.legitridesSquare,
+        year: '2026',
+        role: 'Lead Mobile Engineer',
+        detailTheme: {
+            accentFrom: '#0EA5E9',
+            accentTo: '#9333EA',
+        },
+        stack: ['Flutter', 'Firebase', 'WebSockets', 'Google Maps'],
+        mockupAside:
+            'Both apps share one event contract, so rider ETA, driver assignment, and payout milestones stay consistent even during reconnects or app backgrounding.',
+        mockups: [
+            { src: Assets.mockups.legitrides1, alt: 'Legit Rides rider app' },
+            { src: Assets.mockups.legitrides2, alt: 'Legit Rides driver app' },
+        ],
+        highlights: [
+            'Built rider and driver apps on a shared domain layer while preserving role-specific UX.',
+            'Implemented dark and light themes with semantic tokens across maps, sheets, and trip states.',
+            'Modeled dispatch, acceptance, pickup, and dropoff as deterministic socket-driven transitions.',
+        ],
+        snippets: [
+            {
+                title: 'Dual-app trip state reducer with replay safety',
+                language: 'dart',
+                code: `sealed class TripEvent {
+  const TripEvent(this.seq);
+  final int seq;
+}
+
+class DriverAssigned extends TripEvent {
+  const DriverAssigned(super.seq, this.driver, this.vehicle);
+  final DriverProfile driver;
+  final VehicleMeta vehicle;
+}
+
+class TripStateMachine {
+  static TripSnapshot? apply(TripSnapshot current, TripEvent event) {
+    if (event.seq <= current.lastSeq && event is! ForceResyncEvent) {
+      return null; // Drop replayed frames from reconnect bursts.
+    }
+
+    switch ((current.phase, event)) {
+      case (TripPhase.searching, DriverAssigned assigned):
+        return current.copyWith(
+          phase: TripPhase.driverAssigned,
+          driver: assigned.driver,
+          vehicle: assigned.vehicle,
+          lastSeq: event.seq,
+        );
+      case (TripPhase.driverAssigned, DriverArrived _):
+        return current.copyWith(phase: TripPhase.driverArrived, lastSeq: event.seq);
+      case (TripPhase.driverArrived, PassengerPicked _):
+        return current.copyWith(phase: TripPhase.onTrip, lastSeq: event.seq);
+      case (TripPhase.onTrip, RouteProgress p):
+        return current.copyWith(
+          encodedPolyline: p.remainingPolyline,
+          etaSeconds: p.dropoffEta,
+          distanceMeters: p.remainingMeters,
+          lastSeq: event.seq,
+        );
+      case (_, TripClosed closed):
+        return current.copyWith(
+          phase: TripPhase.completed,
+          fareBreakdown: closed.receipt,
+          lastSeq: event.seq,
+        );
+      default:
+        return current.copyWith(lastSeq: event.seq);
+    }
+  }
+}`,
+            },
+            {
+                title: 'Theme tokens for day/night parity across both apps',
+                language: 'dart',
+                code: `@immutable
+class RideThemeTokens {
+  const RideThemeTokens({
+    required this.surfaceBase,
+    required this.surfaceElevated,
+    required this.textPrimary,
+    required this.textMuted,
+    required this.success,
+    required this.warning,
+    required this.danger,
+    required this.mapRoad,
+  });
+
+  final Color surfaceBase;
+  final Color surfaceElevated;
+  final Color textPrimary;
+  final Color textMuted;
+  final Color success;
+  final Color warning;
+  final Color danger;
+  final String mapRoad;
+}
+
+ThemeData buildRideTheme(Brightness brightness) {
+  final dark = brightness == Brightness.dark;
+  final tokens = dark
+      ? const RideThemeTokens(
+          surfaceBase: Color(0xFF0B1020),
+          surfaceElevated: Color(0xFF131A2E),
+          textPrimary: Color(0xFFF3F4F6),
+          textMuted: Color(0xFF9CA3AF),
+          success: Color(0xFF22C55E),
+          warning: Color(0xFFF59E0B),
+          danger: Color(0xFFEF4444),
+          mapRoad: 'road.dark',
+        )
+      : const RideThemeTokens(
+          surfaceBase: Color(0xFFFFFFFF),
+          surfaceElevated: Color(0xFFF8FAFC),
+          textPrimary: Color(0xFF0F172A),
+          textMuted: Color(0xFF64748B),
+          success: Color(0xFF16A34A),
+          warning: Color(0xFFD97706),
+          danger: Color(0xFFDC2626),
+          mapRoad: 'road.light',
+        );
+
+  return ThemeData(
+    brightness: brightness,
+    scaffoldBackgroundColor: tokens.surfaceBase,
+    cardColor: tokens.surfaceElevated,
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: const Color(0xFF3B82F6),
+      brightness: brightness,
+    ),
+    extensions: [tokens],
+  );
+}`,
+            },
+        ],
+    },
+    {
+        id: 'mediconnect',
+        title: 'MediConnect',
+        tagline: 'Professional social network and jobs platform for biopharma',
+        carouselCaption:
+            'A biopharma-first network where professionals publish insights, discover opportunities, and match with specialized roles through signal-rich profiles.',
+        shortDescription:
+            'Social media and job platform for the biopharma ecosystem, similar in spirit to BioYap, combining networking, feed publishing, and role discovery in one product.',
+        image: Assets.logos.mediconnectSquare,
+        thumb: Assets.logos.mediconnectSquare,
+        year: '2026',
+        role: 'Full-Stack Product Engineer',
+        detailTheme: {
+            accentFrom: '#2563EB',
+            accentTo: '#0F766E',
+        },
+        stack: ['Flutter', 'Node.js', 'PostgreSQL', 'Elasticsearch'],
+        mockupAside:
+            'Discovery quality is driven by structured profile signals, so jobs and people recommendations reflect therapeutic areas, trial exposure, and verified expertise.',
+        mockups: [
+            { src: Assets.mockups.mediconnect1, alt: 'MediConnect social feed' },
+            { src: Assets.mockups.mediconnect2, alt: 'MediConnect jobs and profile' },
+        ],
+        highlights: [
+            'Designed a domain-specific social graph for biotech and biopharma professionals.',
+            'Implemented ranking-aware job matching using profile signals and recency windows.',
+            'Built moderation and trust controls for scientific content and hiring workflows.',
+        ],
+        snippets: [
+            {
+                title: 'Hybrid ranking for feed + role recommendations',
+                language: 'typescript',
+                code: `type Candidate = {
+  id: string;
+  kind: 'post' | 'job';
+  recencyMinutes: number;
+  qualityScore: number;
+  graphAffinity: number;
+  semanticMatch: number;
+  negativeSignals: number;
+};
+
+export function rankMediConnectItems(candidates: Candidate[]): Candidate[] {
+  return candidates
+    .map((item) => {
+      const recencyBoost = Math.exp(-item.recencyMinutes / 720); // 12h half-life feel
+      const trustPenalty = Math.min(0.55, item.negativeSignals * 0.08);
+      const roleBonus = item.kind === 'job' ? 0.06 : 0;
+      const score =
+        item.qualityScore * 0.33 +
+        item.graphAffinity * 0.27 +
+        item.semanticMatch * 0.24 +
+        recencyBoost * 0.10 +
+        roleBonus -
+        trustPenalty;
+
+      return { ...item, _score: score };
+    })
+    .sort((a, b) => b._score - a._score)
+    .map(({ _score, ...rest }) => rest);
+}`,
+            },
+            {
+                title: 'Transactional application pipeline with audit trail',
+                language: 'typescript',
+                code: `export async function submitApplication(input: {
+  candidateId: string;
+  jobId: string;
+  resumeAssetId: string;
+  coverLetter?: string;
+}) {
+  return db.transaction(async (tx) => {
+    const [candidate, job] = await Promise.all([
+      tx.candidate.findUniqueOrThrow({ where: { id: input.candidateId } }),
+      tx.job.findUniqueOrThrow({ where: { id: input.jobId } }),
+    ]);
+
+    if (job.status !== 'OPEN') throw new DomainError('Job is not accepting applications');
+    if (!candidate.isVerifiedProfessional) throw new DomainError('Verification required');
+
+    const app = await tx.application.create({
+      data: {
+        candidateId: candidate.id,
+        jobId: job.id,
+        resumeAssetId: input.resumeAssetId,
+        coverLetter: input.coverLetter ?? null,
+        stage: 'SUBMITTED',
+      },
+    });
+
+    await tx.applicationEvent.create({
+      data: {
+        applicationId: app.id,
+        type: 'SUBMITTED',
+        actorId: candidate.id,
+        payload: {
+          profileSnapshotVersion: candidate.profileVersion,
+          therapeuticAreas: candidate.therapeuticAreas,
+        },
+      },
+    });
+
+    await tx.job.update({
+      where: { id: job.id },
+      data: { applicationsCount: { increment: 1 }, lastAppliedAt: new Date() },
+    });
+
+    return app;
+  });
+}`,
+            },
+        ],
+    },
+    {
+        id: 'luminate',
+        title: 'Luminate',
+        tagline: 'Clinical consultation portal for remote patient-doctor care',
+        carouselCaption:
+            'A private tele-clinic portal helping elderly patients consult from home through scheduled visits, secure records, and video sessions with partnered health centers.',
+        shortDescription:
+            'Medical and clinical portal currently in private trial with selected health centers. It schedules appointments and connects patients and doctors over video, especially for older patients with mobility challenges.',
+        image: Assets.logos.luminateSquare,
+        thumb: Assets.logos.luminateSquare,
+        year: '2026',
+        role: 'Senior Product Engineer',
+        detailTheme: {
+            accentFrom: '#14B8A6',
+            accentTo: '#1D4ED8',
+        },
+        stack: ['Flutter', 'WebRTC', 'Node.js', 'FHIR'],
+        mockupAside:
+            'The core flow minimizes travel burden for elderly users: easy scheduling, reminder cadence, one-tap room entry, and continuity notes for follow-up consults.',
+        mockups: [
+            { src: Assets.mockups.luminate1, alt: 'Luminate appointment flow' },
+            { src: Assets.mockups.luminate2, alt: 'Luminate teleconsultation flow' },
+        ],
+        highlights: [
+            'Built teleconsultation workflows optimized for elderly patients and caregivers.',
+            'Integrated meeting orchestration with device checks and fallback dial-in paths.',
+            'Designed private, health-center-scoped access controls for pilot deployments.',
+        ],
+        snippets: [
+            {
+                title: 'Appointment orchestration with clinician availability locks',
+                language: 'typescript',
+                code: `export async function reserveConsultSlot(params: {
+  patientId: string;
+  clinicianId: string;
+  slotStartIso: string;
+  slotEndIso: string;
+  centerId: string;
+}) {
+  const slotStart = new Date(params.slotStartIso);
+  const slotEnd = new Date(params.slotEndIso);
+
+  return db.$transaction(async (tx) => {
+    const overlap = await tx.appointment.findFirst({
+      where: {
+        clinicianId: params.clinicianId,
+        status: { in: ['SCHEDULED', 'CONFIRMED'] },
+        startsAt: { lt: slotEnd },
+        endsAt: { gt: slotStart },
+      },
+      select: { id: true },
+    });
+    if (overlap) throw new DomainError('Requested slot is no longer available');
+
+    const appointment = await tx.appointment.create({
+      data: {
+        centerId: params.centerId,
+        patientId: params.patientId,
+        clinicianId: params.clinicianId,
+        startsAt: slotStart,
+        endsAt: slotEnd,
+        status: 'SCHEDULED',
+      },
+    });
+
+    await tx.clinicianCalendarBlock.create({
+      data: {
+        clinicianId: params.clinicianId,
+        startsAt: slotStart,
+        endsAt: slotEnd,
+        reason: 'PATIENT_CONSULT',
+        appointmentId: appointment.id,
+      },
+    });
+
+    return appointment;
+  });
+}`,
+            },
+            {
+                title: 'Video-room readiness gate for low-friction join',
+                language: 'typescript',
+                code: `export async function prepareTeleVisitRoom(ctx: {
+  appointmentId: string;
+  actorId: string;
+  actorRole: 'PATIENT' | 'DOCTOR' | 'CAREGIVER';
+}) {
+  const appointment = await appointmentRepo.requireById(ctx.appointmentId);
+  accessPolicy.assertCanJoin(appointment, ctx.actorId, ctx.actorRole);
+
+  const [network, media] = await Promise.all([
+    rtcDiagnostics.measureNetwork(ctx.actorId),
+    rtcDiagnostics.checkMediaDevices(ctx.actorId),
+  ]);
+
+  const profile = connectionPolicy.select({
+    downKbps: network.downKbps,
+    upKbps: network.upKbps,
+    jitterMs: network.jitterMs,
+    camera: media.cameraAvailable,
+    mic: media.microphoneAvailable,
+  });
+
+  const room = await videoProvider.ensureRoom({
+    roomKey: \`apt_\${appointment.id}\`,
+    maxParticipants: 3,
+    recording: false,
+  });
+
+  return {
+    roomToken: await videoProvider.issueJoinToken(room.id, ctx.actorId, profile),
+    profile,
+    fallbackDialIn: profile.level === 'AUDIO_SAFE' ? room.dialIn : null,
+  };
+}`,
+            },
+        ],
+    },
+    {
         id: 'salah-pro',
         title: 'Salah Pro',
         tagline: 'Prayer times, AR compass, and community in one app',
