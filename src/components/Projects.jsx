@@ -4,42 +4,38 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Gap from './Gap.jsx';
-import { projects } from '../constants/projectsData.js';
+import ProjectSlideCover from './ProjectSlideCover.jsx';
+import { getProjectById } from '../constants/projectsData.js';
 
-const HOME_SLIDER_PROJECT_COUNT = 4;
-const featuredProjects = projects.slice(0, HOME_SLIDER_PROJECT_COUNT);
+/** Explicit home swiper lineup (four projects with paired mockups). */
+const HOME_SLIDER_PROJECT_IDS = ['quranly', 'myskool', 'scope-inspect', 'legit-rides'];
 
-function carouselSlideImage(project) {
-    if (project.id === 'salah-pro' || project.id === 'myskool') {
-        return project.thumb;
-    }
-    return project.image;
-}
+const featuredProjects = HOME_SLIDER_PROJECT_IDS.map((id) => getProjectById(id)).filter(Boolean);
 
-function overlayClassForId(id) {
-    if (id === 'salah-pro') return 'salahPO';
-    if (id === 'myskool') return 'myskoolPO';
-    if (id === 'quranly') return 'quranlyPO';
-    if (id === 'scope-inspect') return 'scopePO';
-    if (id === 'nextride') return 'nextridePO';
-    if (id === 'street-sense-media') return 'streetSensePO';
-    return 'myskoolPO';
-}
+function ProjectCard({ title, caption, isActive, projectId, project }) {
+    const from = project.detailTheme?.accentFrom ?? '#ff8660';
+    const to = project.detailTheme?.accentTo ?? '#9a33ff';
 
-function ProjectCard({ image, title, caption, isActive, projectId }) {
     return (
         <Link to={`/projects/${projectId}`} className="projectCardLink">
             <div className="projectCard">
-                <div className="projectImageWrapper">
-                    <img className="projectImage" src={image} alt={title} />
-                    <div
-                        className={`projectOverlay ${isActive ? 'show' : ''} ${overlayClassForId(projectId)}`}
-                    >
-                        <div className="projectOverlayGlass">
-                            <p className="projectOverlayText">
-                                <span className="introBoldText">{title}</span>
-                                <span className="projectOverlaySub">{caption}</span>
-                            </p>
+                <div
+                    className="projectSlideShell"
+                    data-active={isActive ? 'true' : 'false'}
+                    style={{
+                        '--ps-accent-from': from,
+                        '--ps-accent-to': to,
+                    }}
+                >
+                    <div className="projectSlideBoard">
+                        <div className="projectSlideMedia">
+                            <ProjectSlideCover project={project} title={title} />
+                        </div>
+                        <div className="projectSlideCopy">
+                            <p className="projectSlideEyebrow">Featured project</p>
+                            <h3 className="projectSlideHeading">{title}</h3>
+                            <p className="projectSlideLead">{caption}</p>
+                            <span className="projectSlideFoot">View case study</span>
                         </div>
                     </div>
                 </div>
@@ -69,7 +65,7 @@ export default function ProjectsCarousel() {
                 centeredSlides={true}
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 5500, disableOnInteraction: false }}
-                speed={1200}
+                speed={900}
                 loop={false}
                 threshold={20}
                 resistanceRatio={0.6}
@@ -81,7 +77,7 @@ export default function ProjectsCarousel() {
                     <SwiperSlide key={project.id}>
                         {({ isActive }) => (
                             <ProjectCard
-                                image={carouselSlideImage(project)}
+                                project={project}
                                 title={project.title}
                                 caption={project.carouselCaption ?? project.tagline}
                                 isActive={isActive}

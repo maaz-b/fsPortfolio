@@ -1,4 +1,5 @@
 import React from 'react';
+import { EXPERIENCE_SECTION_LEAD } from '../constants/homeExperienceCopy.js';
 import { EmailIcon, GitHubIcon, LinkedinIcon } from './Icons.jsx';
 import Gap from './Gap.jsx';
 
@@ -9,8 +10,13 @@ export default function Contact() {
                 <div className='row contactTitleRow'>
                     <p className='contactTitle'>Contact</p>
                 </div>
-                <p className='outroText'>Five years deep in mobile, web, and backend development. I architect systems that handle real traffic, ship features that users depend on, and solve problems that actually matter.
-                    From pixel-perfect mobile interfaces to rock-solid APIs, I deliver solutions that work under pressure.</p>
+                <p className='outroText'>{EXPERIENCE_SECTION_LEAD}</p>
+                <Gap size={10} orientation='vertical' />
+                <p className='outroText'>
+                    Five years deep in mobile, web, and backend development. I architect systems that handle real traffic,
+                    ship features that users depend on, and solve problems that actually matter. From pixel-perfect mobile
+                    interfaces to rock-solid APIs, I deliver solutions that work under pressure.
+                </p>
                 <Gap size={10} orientation='vertical' />
 
                 <a href="mailto:maazbukhari99@live.com" className='row emailRow' style={{ textDecoration: 'none', color: 'inherit' }}>

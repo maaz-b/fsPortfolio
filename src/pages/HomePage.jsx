@@ -1,45 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
-import { Assets } from '../constants/assets.js';
-
-import Header from '../components/Header.jsx';
-import Avatar from '../components/Avatar.jsx';
-import Banners from '../components/Banners.jsx';
-import { Intro, ProjectsIntro, ExperienceIntro } from '../components/SectionIntros.jsx';
-import { ButtonRow, ProjectsButtonRow } from '../components/Buttons.jsx';
+import HomeHero from '../components/HomeHero.jsx';
+import { ProjectsIntro, ExperienceIntro } from '../components/SectionIntros.jsx';
+import { ProjectsButtonRow } from '../components/Buttons.jsx';
 import TechStackMarquee from '../components/TechStack.jsx';
 import ProjectsCarousel from '../components/Projects.jsx';
-import ExperienceCard from '../components/Experience.jsx';
-import { ServicesRowRight, ServicesRowLeft } from '../components/Services.jsx';
+import ExperienceTimeline from '../components/Experience.jsx';
+import { ServicesBento } from '../components/Services.jsx';
 import { Testimonials, Testimonials2 } from '../components/Testimonials.jsx';
 import Contact from '../components/Contact.jsx';
-import ServicePopup from '../components/ServicePopup.jsx';
-import Gap from '../components/Gap.jsx';
 
 export default function HomePage() {
-    const [activeService, setActiveService] = useState(null);
-
     useEffect(() => {
         document.title = 'Maaz | Software Engineer';
     }, []);
 
     return (
-        <>
-            <div id="home">
-                <Avatar />
-            </div>
-            <Banners />
-            <Intro />
-            <ButtonRow />
-            <Gap size={60} orientation="vertical" />
+        <main className="homePage">
+            <HomeHero />
+            <div className="homeSpacer homeSpacer--block" aria-hidden="true" />
 
             <div className="techStackBackground">
-                <Gap size={20} orientation="vertical"></Gap>
+                <div className="homeSpacer homeSpacer--xs" aria-hidden="true" />
                 <TechStackMarquee />
-                <Gap size={20} orientation="vertical"></Gap>
+                <div className="homeSpacer homeSpacer--xs" aria-hidden="true" />
             </div>
 
-            <Gap size={150} orientation="vertical" className="sectionGap"></Gap>
+            <div className="homeSpacer homeSpacer--section" aria-hidden="true" />
 
             <div className="banner" id="projects">
                 <p>
@@ -47,73 +34,52 @@ export default function HomePage() {
                 </p>
             </div>
             <ProjectsIntro />
-            <Gap size={10} orientation="vertical"></Gap>
+            <div className="homeSpacer homeSpacer--xs" aria-hidden="true" />
 
             <ProjectsCarousel />
 
-            <Gap size={50} orientation="vertical"></Gap>
+            <div className="homeSpacer homeSpacer--tight" aria-hidden="true" />
             <ProjectsButtonRow />
-            <Gap size={180} orientation="vertical" className="sectionGap"></Gap>
+            <div className="homeSpacer homeSpacer--section" aria-hidden="true" />
 
-            <div className="banner" id="experience">
-                <p>
-                    Experience? <span className="gradientExperience">5 years!</span>
-                </p>
-            </div>
-            <ExperienceIntro />
-            <Gap size={20} orientation="vertical"></Gap>
+            <section className="experienceSection" id="experience" aria-labelledby="experience-heading">
+                <div className="experienceSectionAmbient" aria-hidden="true">
+                    <div className="experienceSectionGlow" />
+                </div>
+                <div className="experienceSectionInner">
+                    <header className="experienceSectionHeader">
+                        <h2 id="experience-heading" className="experienceSectionTitle">
+                            Experience <span className="gradientExperience">5 years</span>
+                        </h2>
+                    </header>
+                    <ExperienceIntro />
+                    <ExperienceTimeline />
+                </div>
+            </section>
 
-            <ExperienceCard
-                logo={Assets.logos.lbLogo}
-                role="Senior Software Engineer"
-                company="Launchbox"
-                duration="2024 - Present"
-                description="I have a proven track record of managing and deploying critical features for multiple production-grade, high-traffic applications. My work ensures that applications are not just deployed, but that they represent validated, robust, and impactful success stories for the business."
-            />
+            <div className="homeSpacer homeSpacer--section" aria-hidden="true" />
 
-            <ExperienceCard
-                logo={Assets.logos.doozieLogo}
-                role="Software Engineer (Mobile)"
-                company="Doozie Labs"
-                duration="2022 - 2024"
-                description="I have a proven track record of managing and deploying critical features for multiple production-grade, high-traffic applications. My work ensures that applications are not just deployed, but that they represent validated, robust, and impactful success stories for the business."
-                delay={1.0}
-            />
-
-            <ExperienceCard
-                logo={Assets.logos.appickLogo}
-                role="Flutter Developer"
-                company="Appick"
-                duration="2020 - 2022"
-                description="I have a proven track record of managing and deploying critical features for multiple production-grade, high-traffic applications. My work ensures that applications are not just deployed, but that they represent validated, robust, and impactful success stories for the business."
-                delay={2.0}
-            />
-
-            <Gap size={180} orientation="vertical" className="sectionGap"></Gap>
-
-            <section className="homeServicesSection" aria-labelledby="home-services-heading">
+            <section className="homeServicesSection" id="services" aria-labelledby="home-services-heading">
                 <div className="homeServicesSectionAmbient" aria-hidden="true">
                     <div className="homeServicesSectionGlow" />
                 </div>
                 <div className="homeServicesSectionInner">
                     <div className="banner" id="home-services-heading">
                         <p>Elevate your</p>
-                        <Gap size={10} orientation="vertical"></Gap>
+                        <div className="homeSpacer homeSpacer--xs" aria-hidden="true" />
                         <p>
                             <span className="gradientServices">digital footprint!</span>
                         </p>
                     </div>
-                    <Gap size={100} orientation="vertical" className="sectionGap" />
+                    <div className="homeSpacer homeSpacer--block" aria-hidden="true" />
 
-                    <ServicesRowRight setActiveService={setActiveService} />
-
-                    <ServicesRowLeft setActiveService={setActiveService} />
+                    <ServicesBento />
                 </div>
             </section>
 
-            <Gap size={200} orientation="vertical" className="sectionGap" />
+            <div className="homeSpacer homeSpacer--2xl" aria-hidden="true" />
 
-            <section className="homeTestimonialsSection" aria-labelledby="home-testimonials-heading">
+            <section className="homeTestimonialsSection" id="testimonials" aria-labelledby="home-testimonials-heading">
                 <div className="homeTestimonialsSectionAmbient" aria-hidden="true">
                     <div className="homeTestimonialsSectionGlow" />
                 </div>
@@ -124,22 +90,18 @@ export default function HomePage() {
                         </p>
                     </div>
 
-                    <Gap size={100} orientation="vertical" className="sectionGap" />
+                    <div className="homeSpacer homeSpacer--block" aria-hidden="true" />
 
                     <Testimonials />
                     <Testimonials2 />
                 </div>
             </section>
 
-            <Gap size={100} orientation="vertical" />
-
-            <Gap size={100} orientation="vertical" />
+            <div className="homeSpacer homeSpacer--section" aria-hidden="true" />
 
             <div id="contact">
                 <Contact />
             </div>
-
-            <ServicePopup activeService={activeService} onClose={() => setActiveService(null)} />
-        </>
+        </main>
     );
 }

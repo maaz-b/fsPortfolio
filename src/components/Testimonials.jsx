@@ -66,7 +66,7 @@ export function Testimonials2() {
                     <QuoteIcon size={40} />
                 </div>
                 <Gap size={5} orientation="vertical" />
-                <p className='testimonialText'>"I can't recommend Maaz enough! Their ability to understand our vision and translate it into a functional, beautiful website was impressive. They were communicative, professional, and delivered the project on time. Our online presence has never looked better!"</p>
+                <p className='testimonialText'>"Maaz brought clarity to our hardest integration problems—real-time dispatch, payment edge cases, and the operational dashboards our teams rely on daily. He communicates trade-offs in plain language, documents what matters, and follows through when production misbehaves. Velocity went up and incident noise went down once he owned the mobility stack."</p>
                 <p className='testimonialAuthor'>- Hammad Al-Saud, CTO Tawseel Group</p>
             </div>
         </div>

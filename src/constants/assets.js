@@ -6,6 +6,7 @@ import myskoolBanner from '../assets/images/myskool_banner.png';
 import lbLogo from '../assets/images/lb_logo.png';
 import doozieLogo from '../assets/images/doozie_logo.svg';
 import appickLogo from '../assets/images/appick_logo.png';
+import cloudPrimeroLogo from '../assets/images/cloud_primero_logo.jpg';
 
 import reactIcon from '../assets/vectors/react.svg';
 import firebaseIcon from '../assets/vectors/firebase.svg';
@@ -65,6 +66,7 @@ export const Assets = {
     salahproBanner: salahproBanner,
     myskoolBanner: myskoolBanner,
     lbLogo: lbLogo,
+    cloudPrimeroLogo: cloudPrimeroLogo,
     doozieLogo: doozieLogo,
     appickLogo: appickLogo,
     quranlySquare: quranlySquareImg,
